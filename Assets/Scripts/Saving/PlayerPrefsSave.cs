@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerPrefsSave : MonoBehaviour
 {
-
     public PlayerHandler player;
     private void Start()
     {
