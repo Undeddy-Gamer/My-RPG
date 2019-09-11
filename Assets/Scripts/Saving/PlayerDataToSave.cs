@@ -10,6 +10,8 @@ public class PlayerDataToSave
     public string playerName;
     public int level;
 
+    public string checkPoint;
+
     public float maxHealth, maxMana, maxStamina;
     public float curHealth, curMana, curStamina;
     public float pX, pY, pZ;
@@ -20,6 +22,8 @@ public class PlayerDataToSave
 
         playerName = player.name;
         level = 0;
+
+        checkPoint = player.curCheckPoint.name;
 
         maxHealth = player.maxHealth;
         maxMana = player.maxMana;

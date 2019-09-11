@@ -33,32 +33,40 @@ namespace RPG.Player
 
         private void Move()
         {
-            if(_charC.isGrounded)
-            {
-                //set speed
 
-                if (Input.GetButton("Sprint"))
+            if (!PlayerHandler.isDead)  // If play is not dead allow directional movement
+            { 
+                if(_charC.isGrounded)
                 {
-                    moveSpeed = runSpeed;
-                }
-                else if (Input.GetButton("Crouch"))
-                {
-                    moveSpeed = crouchSpeed;
-                }
-                else
-                {
-                    moveSpeed = walkSpeed;
-                }
+                    //set speed
+
+                    if (Input.GetButton("Sprint"))
+                    {
+                        moveSpeed = runSpeed;
+                    }
+                    else if (Input.GetButton("Crouch"))
+                    {
+                        moveSpeed = crouchSpeed;
+                    }
+                    else
+                    {
+                        moveSpeed = walkSpeed;
+                    }
                 
-                //calculate moement direction based off inputs
-                _moveDir = transform.TransformDirection(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * moveSpeed);
+                    //calculate moement direction based off inputs
+                    _moveDir = transform.TransformDirection(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * moveSpeed);
 
-                if(Input.GetButton("Jump"))
-                {
-                    _moveDir.y = jumpSpeed;
+                    if(Input.GetButton("Jump"))
+                    {
+                        _moveDir.y = jumpSpeed;
+                    }
                 }
             }
 
+            if(PlayerHandler.isDead)
+            {
+                _moveDir = Vector3.zero;
+            }
             //Regardless if we are grounded
             //apply gravity
             _moveDir.y -= _gravity * Time.deltaTime;

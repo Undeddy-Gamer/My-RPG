@@ -10,7 +10,7 @@ public class PlayerPrefsSave : MonoBehaviour
         if(!PlayerPrefs.HasKey("Loaded"))
         {
             PlayerPrefs.DeleteAll();
-            Load();
+            FirstLoad();
             PlayerPrefs.SetInt("Loaded", 0);
             Save();
         }
@@ -53,7 +53,9 @@ public class PlayerPrefsSave : MonoBehaviour
     {
         PlayerDataToSave data = PlayerSaveToBinary.LoadData(player);
 
-        //player.name = data.playerName;
+        player.name = data.playerName;
+
+        player.curCheckPoint = GameObject.Find(data.checkPoint).GetComponent<Transform>();
 
         player.maxHealth = data.maxHealth;
         player.maxMana = data.maxMana;
@@ -81,6 +83,31 @@ public class PlayerPrefsSave : MonoBehaviour
         //Get the saved rotation of the character and set via a Quaternion (4 floats, X,Y,Z,W)
         player.transform.rotation = new Quaternion(PlayerPrefs.GetFloat("RotationX", 0), PlayerPrefs.GetFloat("RotationY", 0), PlayerPrefs.GetFloat("RotationZ", 0), PlayerPrefs.GetFloat("RotationW", 0));
         */
+
+    }
+
+
+    public void FirstLoad()
+    {
+        PlayerDataToSave data = PlayerSaveToBinary.LoadData(player);
+
+        player.name = data.playerName;
+
+        player.curCheckPoint = GameObject.Find("Home Checkpoint 1").GetComponent<Transform>();
+
+        player.maxHealth = data.maxHealth;
+        player.maxMana = data.maxMana;
+        player.maxStamina = data.maxStamina;
+
+        player.curHealth = data.curHealth;
+        player.curMana = data.curMana;
+        player.curStamina = data.curStamina;
+
+        player.transform.position = new Vector3(data.pX, data.pY, data.pZ);
+        player.transform.rotation = new Quaternion(data.rX, data.rY, data.rZ, data.rW);
+
+
+        
 
     }
 }
