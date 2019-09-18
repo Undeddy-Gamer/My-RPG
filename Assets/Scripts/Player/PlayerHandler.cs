@@ -17,10 +17,12 @@ public class PlayerHandler : MonoBehaviour
     [Header("Refrence Variables")]
     public Slider healthBar;
     public Slider manaBar, staminaBar;
+    
 
     [Header("Damage Effect Variables")]
     public Image damageImage;
     public Image deathImage;
+    public Text deathText;
     public AudioClip deathClip;
     public float flashSpeed = 5;
     public Color flashColour = new Color(1, 0, 0, .2f);
@@ -103,8 +105,17 @@ public class PlayerHandler : MonoBehaviour
         playerAudio.Play();
 
         deathImage.gameObject.GetComponent<Animator>().SetTrigger("Dead");
+
+        deathText.text = "You died, you suck!";
+        Invoke("ChangeText", 6f);
         Invoke("Revive", 9f);
 
+
+    }
+
+    void ChangeText()
+    {
+        deathText.text = "Fine... you can have another go";
     }
 
     void Revive()
@@ -118,6 +129,8 @@ public class PlayerHandler : MonoBehaviour
         this.transform.position = curCheckPoint.position;
         this.transform.rotation = curCheckPoint.rotation;
         deathImage.gameObject.GetComponent<Animator>().SetTrigger("Alive");
+        deathText.text = "";
+
     }
 
     private void OnTriggerEnter(Collider other)
