@@ -83,6 +83,7 @@ public class Enemey : MonoBehaviour
     {
         anim.SetBool("Walk", false);
         anim.SetBool("Run", false);
+        anim.SetBool("Attack", false);
 
         Patrol();
         Seek();
@@ -100,6 +101,15 @@ public class Enemey : MonoBehaviour
         state = AIState.Seek;
         anim.SetBool("Run", true);
         agent.destination = player.position;
+    }
+
+    private void LateUpdate()
+    {
+        /*if (healthBar.fillAmount < 1 && healthBar.fillAmount >)
+        {
+
+        }*/
+
     }
 
     public virtual void Attack()

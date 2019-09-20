@@ -18,7 +18,8 @@ public class Wolf : Enemey
         {
             critDamage = Random.Range(baseDamage / 2, baseDamage * difficulty);
         }
-         
-        player.GetComponent<PlayerHandler>().curHealth -= baseDamage * difficulty;
+
+        player.GetComponent<PlayerHandler>().DamagePlayer(baseDamage * difficulty + critDamage);       
+        
     }
 }
