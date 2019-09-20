@@ -16,8 +16,9 @@ public class Enemey : MonoBehaviour
 
     [Space(5), Header("Base Stats")]
     public float curHealth;
-    public float maxHealth, moveSpeed, attackRange, attackSpeed, sightRange;
+    public float maxHealth, moveSpeed, attackRange, attackSpeed, sightRange, baseDamage;
     public int curWaypoint;
+    public int difficulty;
 
     [Space(5), Header("Base References")]
     public GameObject self;
@@ -49,7 +50,7 @@ public class Enemey : MonoBehaviour
     public void Patrol()
     {
         // If no waypoints set do not continue
-        if(waypoints.Length == 0 || Vector3.Distance(player.position, self.transform.position) <= sightRange)
+        if(waypoints.Length == 0 || Vector3.Distance(player.position, self.transform.position) <= sightRange || curHealth < 0)
         {
             return;
         }
@@ -73,13 +74,16 @@ public class Enemey : MonoBehaviour
             }
 
         }
-
+        anim.SetBool("Walk", true);       
 
     }
 
 
     private void Update()
     {
+        anim.SetBool("Walk", false);
+        anim.SetBool("Run", false);
+
         Patrol();
         Seek();
         Attack();
@@ -89,25 +93,29 @@ public class Enemey : MonoBehaviour
     public void Seek()
     {
         //If player in sight range chase
-        if (Vector3.Distance(player.position, self.transform.position) > sightRange || Vector3.Distance(player.position, self.transform.position) < attackRange)
+        if (Vector3.Distance(player.position, self.transform.position) > sightRange || Vector3.Distance(player.position, self.transform.position) < attackRange || curHealth < 0)
         {
             return;
         }
         state = AIState.Seek;
-
+        anim.SetBool("Run", true);
         agent.destination = player.position;
     }
 
     public virtual void Attack()
     {
         //if player in attack range attack
-        if(Vector3.Distance(player.position, self.transform.position) > attackRange || curHealth > 0)
+                
+        if(Vector3.Distance(player.position, self.transform.position) >= attackRange || curHealth < 0 || player.GetComponent<PlayerHandler>().curHealth < 0)
         {
             return;
         }
 
         state = AIState.Attack;
+        anim.SetTrigger("Attack");
         Debug.Log("Attack");
+
+
     }
 
     public void Die()
@@ -121,7 +129,7 @@ public class Enemey : MonoBehaviour
         state = AIState.Die;
         agent.destination = self.transform.position;
 
-        //anim.SetBool("Die") = true;
+        anim.SetTrigger("Die");
     }
 
 
