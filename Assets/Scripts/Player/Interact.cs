@@ -27,6 +27,16 @@ public class Interact : MonoBehaviour
                 switch (hitInfo.collider.tag)
                 {
                     case "NPC":
+                        Dialogue dlg = hitInfo.transform.GetComponent<Dialogue>();
+                        if (dlg != null)
+                        {
+                            dlg.showDlg = true;
+                            Time.timeScale = 0;
+                            Cursor.visible = true;
+                            Cursor.lockState = CursorLockMode.None;
+
+                        }
+
                         Debug.Log("Talk to NPC is Triggered");
                         break;
                     case "Item":
