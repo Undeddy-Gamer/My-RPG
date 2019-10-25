@@ -13,6 +13,7 @@ public static class ItemData
         int heal = 0;
         string iconName = "";
         string meshName = "";
+        bool statckable = false;
         ItemTypes type = ItemTypes.Misc;
 
         switch (itemId)
@@ -28,6 +29,7 @@ public static class ItemData
                 heal = 0;
                 iconName = "Armour/LeatherChest";
                 meshName = "Armour/LeatherChest";
+                statckable = false;
                 type = ItemTypes.Armour;
                 break;
             case 1:
@@ -41,6 +43,7 @@ public static class ItemData
                 iconName = "Armour/LeatherBoots";
                 meshName = "Armour/LeatherBoots";
                 type = ItemTypes.Armour;
+                statckable = false;
                 break;
             case 2:
                 name = "Leather Leggings";
