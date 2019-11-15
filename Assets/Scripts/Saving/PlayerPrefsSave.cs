@@ -91,7 +91,7 @@ public class PlayerPrefsSave : MonoBehaviour
     {
         PlayerDataToSave data = PlayerSaveToBinary.LoadData(player);
 
-        player.name = data.playerName;
+        //player.name = data.playerName;
 
         player.curCheckPoint = GameObject.Find("Home Checkpoint 1").GetComponent<Transform>();
 
