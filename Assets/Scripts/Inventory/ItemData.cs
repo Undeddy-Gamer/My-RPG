@@ -73,14 +73,14 @@ public static class ItemData
             #region Weapon 100-199
             case 100:
                 name = "Iron Sword";
-                description = "";
+                description = "A Basic Sword made from Iron.";
                 amount = 1;
                 value = 100;
                 damage = 15;
                 armour = 0;
                 heal = 0;
-                iconName = "Armour/IronSword";
-                meshName = "Armour/IronSword";
+                iconName = "Weapons/IronSword";
+                meshName = "Weapons/IronSword";
                 type = ItemTypes.Weapon;
                 break;
             case 101:
@@ -91,8 +91,8 @@ public static class ItemData
                 damage = 10;
                 armour = 0;
                 heal = 0;
-                iconName = "Armour/IronAxe";
-                meshName = "Armour/IronAxe";
+                iconName = "Weapons/IronAxe";
+                meshName = "Weapons/IronAxe";
                 type = ItemTypes.Weapon;
                 break;
             case 102:
@@ -103,8 +103,8 @@ public static class ItemData
                 damage = 8;
                 armour = 0;
                 heal = 0;
-                iconName = "Armour/IronMace";
-                meshName = "Armour/IronMace";
+                iconName = "Weapons/IronMace";
+                meshName = "Weapons/IronMace";
                 type = ItemTypes.Weapon;
                 break;
             #endregion
