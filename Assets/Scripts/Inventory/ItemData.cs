@@ -2,8 +2,10 @@
 
 public static class ItemData
 {
+
     public static Item CreateItem(int itemId)
     {
+        //Create 
         string name = "";
         string description = "";
         int amount = 0;
@@ -347,6 +349,7 @@ public static class ItemData
                 heal = 0;
                 iconName = "";
                 meshName = "";
+                statckable = false;
                 type = ItemTypes.Misc;
                 break;
         }
@@ -362,7 +365,8 @@ public static class ItemData
             Heal = heal,
             IconName = Resources.Load("Icons/" + iconName) as Texture2D,
             MeshName = Resources.Load("Prefabs/" + meshName) as GameObject,
-            ItemType = type
+            ItemType = type,
+            Stackable = statckable
         };
         return temp;
     }

@@ -6,9 +6,7 @@ using UnityEngine.UI;
 
 public class HealthbarHandler : Enemey
 {
-
     
-
     private void LateUpdate()
     {
         if (healthBar.fillAmount < 1 && healthBar.fillAmount > 0)

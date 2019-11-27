@@ -89,6 +89,7 @@ public class PlayerPrefsSave : MonoBehaviour
 
     public void FirstLoad()
     {
+        
         PlayerDataToSave data = PlayerSaveToBinary.LoadData(player);
 
         //player.name = data.playerName;
@@ -104,10 +105,7 @@ public class PlayerPrefsSave : MonoBehaviour
         player.curStamina = data.curStamina;
 
         player.transform.position = new Vector3(data.pX, data.pY, data.pZ);
-        player.transform.rotation = new Quaternion(data.rX, data.rY, data.rZ, data.rW);
-
-
-        
+        player.transform.rotation = new Quaternion(data.rX, data.rY, data.rZ, data.rW);        
 
     }
 }

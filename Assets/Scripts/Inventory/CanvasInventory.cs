@@ -149,26 +149,23 @@ public class CanvasInventory : MonoBehaviour
 
     private void AddItem(Item theItem)
     {
-        // create the button
+        // create a new button from prefab
         GameObject tempButton = Instantiate(buttonObject, invDisplayPanel.transform);
         Button itemButton = tempButton.GetComponent<Button>();
-        //buttonObject.GetComponent<Button>();
+        
 
         //if we have more than 1 of the item lets display a count on the button too
         if (theItem.Amount > 1)
         {
             itemButton.GetComponentInChildren<Text>().text = theItem.Name + " (" + theItem.Amount + ")";
         }
-        else // set the text of the button  to name only
+        else // set the text of the button to name only
         {            
             itemButton.GetComponentInChildren<Text>().text = theItem.Name;
         }
 
-        // attach a listener to the button (function that it will activate when clicked)
-        //itemButton.onClick.AddListener(TestClick);
-        itemButton.onClick.AddListener(delegate { SelectItem(theItem); });
-        //Button tempButton = (Button)
-        
+        // attach a listener to the button (function that it will activate when clicked)        
+        itemButton.onClick.AddListener(delegate { SelectItem(theItem); });        
     }
 
     public void SelectItem(Item theItem)

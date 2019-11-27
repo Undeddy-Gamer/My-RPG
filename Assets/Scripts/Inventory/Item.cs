@@ -7,7 +7,7 @@ public class Item
     //Desplay name and description for players
     private string _name;
     private string _description;
-    //Amount of items of that type...Stackable
+    //Amount of items of that type
     private int _amount;
     //Buy and Sell value
     private int _value;
@@ -15,6 +15,7 @@ public class Item
     private int _damage;
     private int _armour;
     private int _heal;
+    private bool _stackable;
     //Display Icon and Mesh
     private Texture2D _iconName;
     private GameObject _meshName;
@@ -22,6 +23,8 @@ public class Item
     private ItemTypes _type;
     #endregion
     #region Properties
+
+    // Make the attributes publically available to change/get
     public int ID
     {
         get { return _id; }
@@ -62,6 +65,12 @@ public class Item
         get { return _heal; }
         set { _heal = value; }
     }
+
+    public bool Stackable
+    {
+        get { return _stackable; }
+        set { _stackable = value; }
+    }
     public Texture2D IconName
     {
         get { return _iconName; }
@@ -79,6 +88,8 @@ public class Item
     }
     #endregion
 }
+
+//Enum of Item types to make it easier to differentiate later
 public enum ItemTypes
 {
     Armour,
