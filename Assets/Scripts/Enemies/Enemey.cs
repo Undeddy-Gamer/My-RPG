@@ -42,14 +42,12 @@ public class Enemey : MonoBehaviour
 
         // get the nav mesh
         agent = self.GetComponent<NavMeshAgent>();
-
-        // start initial patrol
+                
         Patrol();
 
         // set move speed
         agent.speed = moveSpeed;
-
-        // 
+                
         anim = self.GetComponent<Animator>();
 
         // set first waypoint for enemy
@@ -99,7 +97,7 @@ public class Enemey : MonoBehaviour
         //check what mode the Enemy should be in
         Patrol();
         Seek();
-        Attack();
+        //Attack();
         Die();
     }
 

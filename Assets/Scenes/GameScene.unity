@@ -9905,7 +9905,6 @@ GameObject:
   - component: {fileID: 1118324497}
   - component: {fileID: 1118324499}
   - component: {fileID: 1118324498}
-  - component: {fileID: 1118324500}
   m_Layer: 0
   m_Name: MrPlayer
   m_TagString: Player
@@ -10078,7 +10077,7 @@ MonoBehaviour:
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.2}
   curCheckPoint: {fileID: 675011978}
-  saveAndLoad: {fileID: 1118324500}
+  saveAndLoad: {fileID: 0}
 --- !u!82 &1118324497
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10297,19 +10296,6 @@ MonoBehaviour:
   txtValue: {fileID: 1316976454}
   txtAttributes: {fileID: 1752346606}
   invItemImage: {fileID: 575761498}
---- !u!114 &1118324500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1118324488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b7e6d73822bbf647893565d9e9e9107, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!1 &1124528010
 GameObject:
   m_ObjectHideFlags: 0
@@ -11695,6 +11681,11 @@ PrefabInstance:
       propertyPath: agent
       value: 
       objectReference: {fileID: 1984046027}
+    - target: {fileID: 7468824059694322430, guid: 36a07a4fda4b5bf4e819e8f34b2afca8,
+        type: 3}
+      propertyPath: attackRange
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1889318932567166573, guid: 36a07a4fda4b5bf4e819e8f34b2afca8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 36a07a4fda4b5bf4e819e8f34b2afca8, type: 3}

@@ -7,8 +7,26 @@ public class Wolf : Enemey
     [Header("Wolf Stats")]
     public float curStamina;
     public float maxStamina;
-
+    private float timer;
     public override void Attack()
+    {
+
+        //change speed periodically during attack run to simulate animal now running
+        timer -= Time.deltaTime;
+        if (timer < 0)
+        {
+            this.moveSpeed = 7f;
+            timer = 1;
+                    }
+        else if (timer > .5f)
+        {
+            this.moveSpeed = 5f;
+        }
+    }
+
+
+    
+    public void BiteAttack()
     {
         // get a randomised crit chance
         int critChance = Random.Range(0, 21);
@@ -25,22 +43,7 @@ public class Wolf : Enemey
 
         // log a test check for polymorphism
         Debug.Log("Wolf Attack");
-
-    }
-
-
-    /*
-    public void BiteAttack()
-    {
-        int critChance = Random.Range(0, 21);
-        float critDamage = 0;
-        if (critChance == 20)
-        {
-            critDamage = Random.Range(baseDamage / 2, baseDamage * difficulty);
-        }
-
-        player.GetComponent<PlayerHandler>().DamagePlayer(baseDamage * difficulty + critDamage);       
         
     }
-    */
+    
 }
